@@ -2,4 +2,17 @@ Based on the architecture diagram, and the steps you have taken so far to upload
 
 # Poor practice 1
 
+InstanceRolePolicy-C3 has given full control of S3. This practice is against the least control access best practice.
+
+            Statement:
+              - Effect: Allow
+                Action: 's3:*'
+                Resource: '*'
+
+Also, the encryption and versioning is not enabled in S3.
+
 # Poor practice 2
+
+WebAppSG has opened ports 5000 and 8080 for HTTP communication. Ideally, port 443 should only be opened for HTTPs communication.
+
+AppLoadBalancerSG and AttackInstanceSG has opened inbound and outbound communcation from all IPs (0.0.0.0/0) throwing open a wide attack surface.

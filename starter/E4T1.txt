@@ -2,4 +2,12 @@
 
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
 
+Ensure no security groups allow ingress from 0.0.0.0/0 to port 22
+Set more secure password for the instance. Less secure password is being alarmed multiple times in security checks.
+
+
 # Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+
+The policy of S3 bucket should give explicity access to cand-c3-free-recipes-290133382718
+There is no reason to give '*' S3 access. This will needlessly expose cand-c3-secret-recipes-290133382718 bucket also.
+

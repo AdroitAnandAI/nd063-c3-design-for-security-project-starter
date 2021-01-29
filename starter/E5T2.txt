@@ -2,12 +2,37 @@
 
 ## Scan infrastructure as code templates
 
+Both are suitable for IAC code scan
+a) Terrascan
+b) Regula
+
 ### Example vulnerability
+
+a) Terrascan: Exposure to all IPs on public instances and security group definitions.
+b) Regula: IAM privileges given more than what is required.
 
 ##Scan AMI’s or containers for OS vulnerabilities
 
+Anchore
+https://anchore.com/
+
+Clair also can be used:
+Its an open source vulnerability scanner and static analysis tool for container images
+
+
 ### Example vulnerability
+
+Eg for Anchore: MEDIUM Vulnerability found in os package type (dpkg) - imagemagick-6-common (CVE-2008-3134 - Multiple unspecified vulnerabilities in GraphicsMagick before 1.2.4 allow remote attackers to cause a denial of service (crash, infinite loop, or memory consumption)
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
 
+Cloudmapper is an open-source tool that enables you to analyze and build an interactive visualization of assets, services, and other components in your AWS environment.
+
+AWStealth is a security that tool teams use to discover the most privileged entities in the AWS cloud environment. The scan results show the users with excessive, risky, or sensitive permissions.
+
+
 ### Example vulnerability
+
+Cloudmapper: Perform security audits, and easily share the analysis information. Also identifies publicly exposed resources
+
+AWStealth: no MFA and no constrained condition in their permissions)
