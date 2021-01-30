@@ -3,6 +3,7 @@
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
 
 Ensure no security groups allow ingress from 0.0.0.0/0 to port 22
+Remove the SSH Login with password capability. Use SSM. SSH Bruteforce will not work hence.
 Set more secure password for the instance. Less secure password is being alarmed multiple times in security checks.
 
 
